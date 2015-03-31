@@ -1,0 +1,12 @@
+diff -Naur qt-4.8.6.orig/configure qt-4.8.6/configure
+--- qt-4.8.6.orig/configure	2015-03-30 22:04:26.358381524 -0700
++++ qt-4.8.6/configure	2015-03-30 22:11:22.649160101 -0700
+@@ -4915,7 +4915,7 @@
+ }
+ 
+ # build qmake
+-if true; then ###[ '!' -f "$outpath/bin/qmake" ];
++if [ ! -f "$ROOT/$TOOLCHAIN/bin/qmake" ]; then
+     echo "Creating qmake. Please wait..."
+ 
+     OLD_QCONFIG_H=

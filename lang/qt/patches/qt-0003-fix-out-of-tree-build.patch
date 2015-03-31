@@ -1,0 +1,11 @@
+diff -Naur qt-4.8.6.orig/bin/syncqt qt-4.8.6/bin/syncqt
+--- qt-4.8.6.orig/bin/syncqt	2015-03-30 12:40:57.408153886 -0700
++++ qt-4.8.6/bin/syncqt	2015-03-30 12:42:05.584296968 -0700
+@@ -389,7 +389,6 @@
+ ######################################################################
+ sub fixPaths {
+     my ($file, $dir) = @_;
+-    $dir =~ s=^$quoted_basedir/=$out_basedir/= if(!($basedir eq $out_basedir));
+     $file =~ s=\\=/=g;
+     $dir =~ s=\\=/=g;
+ 

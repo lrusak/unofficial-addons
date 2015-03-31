@@ -1,0 +1,41 @@
+diff -Naur qt-4.8.6.orig/configure qt-4.8.6/configure
+--- qt-4.8.6.orig/configure	2015-03-30 23:28:03.340992191 -0700
++++ qt-4.8.6/configure	2015-03-30 23:30:43.269557477 -0700
+@@ -8745,6 +8745,20 @@
+ # save configuration into .qmake.cache
+ #-------------------------------------------------------------------------------
+ 
++if [ ! -f "$ROOT/$TOOLCHAIN/bin/moc" ]; then
++  QMAKE_MOC        = \$\$QT_BUILD_TREE/bin/moc
++  QMAKE_UIC        = \$\$QT_BUILD_TREE/bin/uic
++  QMAKE_UIC3       = \$\$QT_BUILD_TREE/bin/uic3
++  QMAKE_RCC        = \$\$QT_BUILD_TREE/bin/rcc
++  QMAKE_QDBUSXML2CPP = \$\$QT_BUILD_TREE/bin/qdbusxml2cpp
++else
++  QMAKE_MOC        = $ROOT/$TOOLCHAIN/bin/moc
++  QMAKE_UIC        = $ROOT/$TOOLCHAIN/bin/uic
++  QMAKE_UIC3       = $ROOT/$TOOLCHAIN/bin/uic3
++  QMAKE_RCC        = $ROOT/$TOOLCHAIN/bin/rcc
++  QMAKE_QDBUSXML2CPP = $ROOT/$TOOLCHAIN/bin/qdbusxml2cpp
++fi
++
+ CACHEFILE="$outpath/.qmake.cache"
+ [ -f "$CACHEFILE.tmp" ] && rm -f "$CACHEFILE.tmp"
+ cat >>"$CACHEFILE.tmp" <<EOF
+@@ -8756,11 +8770,11 @@
+ QMAKE_MOC_SRC    = \$\$QT_BUILD_TREE/src/moc
+ 
+ #local paths that cannot be queried from the QT_INSTALL_* properties while building QTDIR
+-QMAKE_MOC        = \$\$QT_BUILD_TREE/bin/moc
+-QMAKE_UIC        = \$\$QT_BUILD_TREE/bin/uic
+-QMAKE_UIC3       = \$\$QT_BUILD_TREE/bin/uic3
+-QMAKE_RCC        = \$\$QT_BUILD_TREE/bin/rcc
+-QMAKE_QDBUSXML2CPP = \$\$QT_BUILD_TREE/bin/qdbusxml2cpp
++QMAKE_MOC        = $QMAKE_MOC
++QMAKE_UIC        = $QMAKE_UIC
++QMAKE_UIC3       = $QMAKE_UIC3
++QMAKE_RCC        = $QMAKE_RCC
++QMAKE_QDBUSXML2CPP = $QMAKE_QDBUSXML2CPP
+ QMAKE_INCDIR_QT  = \$\$QT_BUILD_TREE/include
+ QMAKE_LIBDIR_QT  = \$\$QT_BUILD_TREE/lib
+ 
